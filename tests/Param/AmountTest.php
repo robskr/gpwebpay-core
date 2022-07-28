@@ -54,4 +54,11 @@ class AmountTest extends TestCase
 
         new Amount(1000.001);
     }
+
+    public function testAccurateValue(): void
+    {
+        self::assertSame(1890, (new Amount(18.90))->getValue());
+        self::assertSame(1990, (new Amount(19.90))->getValue());
+        self::assertSame(2040, (new Amount(20.40))->getValue());
+    }
 }
