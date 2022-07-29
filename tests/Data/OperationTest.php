@@ -41,7 +41,7 @@ class OperationTest extends TestCase
     {
         $operation = new Operation(
             new OrderNumber('123456'),
-            new Amount(1000.00),
+            new Amount(100000),
             new Currency(CurrencyEnum::CZK()),
             'CZK',
             new ResponseUrl('http://response.com/proccess-gpw-response')

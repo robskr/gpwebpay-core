@@ -85,7 +85,7 @@ class TestHelpers
 
         return self::$operation = new Operation(
             new OrderNumber(self::ORDER_NUMBER),
-            new Amount(1000),
+            new Amount(100000),
             new Currency(\Pixidos\GPWebPay\Enum\Currency::CZK()),
             self::GATEWAY,
             new ResponseUrl(self::RESPONSE_URL)

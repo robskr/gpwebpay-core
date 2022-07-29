@@ -26,39 +26,16 @@ class AmountTest extends TestCase
      */
     public function testSuccessCreate(): void
     {
-        $amount = new Amount(1000);
-
-        self::assertSame(100000, $amount->getValue());
-        self::assertSame('100000', (string)$amount);
-    }
-
-    /**
-     * @throws InvalidArgumentException
-     */
-    public function testSuccessCreateWithoutConverting(): void
-    {
-        $amount = new Amount(1000, false);
+        $amount = new Amount(1000); // 10.00 Kč or €
 
         self::assertSame(1000, $amount->getValue());
         self::assertSame('1000', (string)$amount);
     }
 
-
-    /**
-     * @throws InvalidArgumentException
-     */
-    public function testNonIntegerThrowException(): void
-    {
-        $this->expectException(InvalidArgumentException::class);
-        $this->expectExceptionMessage('AMOUNT must be integer "100000.1" given.');
-
-        new Amount(1000.001);
-    }
-
     public function testAccurateValue(): void
     {
-        self::assertSame(1890, (new Amount(18.90))->getValue());
-        self::assertSame(1990, (new Amount(19.90))->getValue());
-        self::assertSame(2040, (new Amount(20.40))->getValue());
+        self::assertSame(1890, (new Amount(1890))->getValue());
+        self::assertSame(1990, (new Amount(1990))->getValue());
+        self::assertSame(2040, (new Amount(2040))->getValue());
     }
 }

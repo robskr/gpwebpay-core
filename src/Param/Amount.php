@@ -17,8 +17,6 @@ namespace Pixidos\GPWebPay\Param;
 use Pixidos\GPWebPay\Enum\Param;
 use Pixidos\GPWebPay\Exceptions\InvalidArgumentException;
 
-use function Pixidos\GPWebPay\assertIsInteger;
-
 class Amount implements IParam
 {
     /**
@@ -29,21 +27,13 @@ class Amount implements IParam
     /**
      * Amount constructor.
      *
-     * @param float $amount
-     * @param bool  $converToPennies
+     * @param int $amount Amount in cents/pennies (i.e. 100 Kč = 10000)
      *
      * @throws InvalidArgumentException
      */
-    public function __construct(float $amount, bool $converToPennies = true)
+    public function __construct(int $amount)
     {
-        // prevod na halere/centy
-        if ($converToPennies) {
-            $amount *= 100;
-        }
-
-        assertIsInteger($amount, 'AMOUNT');
-
-        $this->amount = (int)$amount;
+        $this->amount = $amount;
     }
 
 
